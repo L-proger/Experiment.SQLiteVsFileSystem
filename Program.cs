@@ -9,8 +9,9 @@ namespace SQLiteVsFileSystem {
                 Console.WriteLine($"Test directory '{testDirectory}' does not exist!");
                 return;
             }
-            int testFilesCount = 20;
-            TestDatabase(new FileDatabaseSqlite(testDirectory + "sqlite.db", true), testFilesCount);
+            int testFilesCount = 10000;
+            TestDatabase(new FileDatabaseLevelDB(testDirectory + "level.db", true), testFilesCount);
+            //TestDatabase(new FileDatabaseSqlite(testDirectory + "sqlite.db", true), testFilesCount);
             TestDatabase(new FileDatabaseFileSystem(testDirectory, true), testFilesCount);
         }
 
